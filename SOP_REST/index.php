@@ -63,12 +63,12 @@
 		global $connection;
 		$data = json_decode(file_get_contents("php://input"), true);
 
-		$product_title = $data["title"];
 		$product_item_number = $data["item_number"];
+		$product_title = $data["title"];
 		$product_price = $data["price"];
 		$product_stock = $data["stock"];
 
-		$query = "INSERT INTO products (title, item_number, price, stock) VALUES ('".$product_title."'. '".$product_item_number."', '".$product_price."', '".$product_stock."')";
+		$query = "INSERT INTO products (item_number, title, price, stock) VALUES ('".$product_item_number."'. '".$product_title."', '".$product_price."', '".$product_stock."')";
 		if(mslqi_query($connection, $query)) {
 			$response = array(
 				"status" => 1,
@@ -89,12 +89,12 @@
 
 		$data = json_decode(file_get_contents("php://input"), true);
 
-		$product_title = $data["title"];
 		$product_item_number = $data["item_number"];
+		$product_title = $data["title"];
 		$product_price = $data["price"];
 		$product_stock = $data["stock"];
 
-		$query = "UPDATE products SET title = '".$product_title."',item_number = '".$product_item_number."', price = '".$product_price."', stock = '".$product_stock."' WHERE id = ".$id;
+		$query = "UPDATE products SET item_number = '".$product_item_number."', title = '".$product_title."', price = '".$product_price."', stock = '".$product_stock."' WHERE id = ".$id;
 	    if(mysqli_query($connection, $query)){
 	        $response = array(
 	            "status" => 1,
